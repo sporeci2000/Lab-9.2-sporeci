@@ -11,6 +11,14 @@ export const CharacterCounter: React.FC<CharacterCounterProps> = ({
 }) => {
     const [text, setText] = useState('');
 
+    const handleTextChange = (newText: string) => {
+        const words = newText.trim().split(/\s+/);
+        if (words.length <= maxWords) {
+            setText(newText);
+        }
+
+    };
+
     const characterCount = text.length;
 
     const wordCount = text.trim() === ''
@@ -28,14 +36,24 @@ export const CharacterCounter: React.FC<CharacterCounterProps> = ({
     const isBelowMin = wordCount < minWords;
     const isAboveMax = wordCount > maxWords;
 
+    // Check if user typed something
+    const hasInput = text.trim().length > 0;
+
     return (
         <div className="container">
             <div className="section">
                 <TextInput
-                    onTextChange={setText}
+                    onTextChange={handleTextChange}
                     placeholder="Start typing here..."
                     initialValue=""
                 />
+
+                <button
+                    onClick={() => setText('')}
+                    style={{ marginTop: '1rem', padding: '0.5rem 1rem', cursor: 'pointer' }}
+                >
+                    Clear Text
+                </button>
             </div>
 
             <div className="section">
@@ -60,12 +78,13 @@ export const CharacterCounter: React.FC<CharacterCounterProps> = ({
             </div>
 
             <div className="section">
-                {isBelowMin && (
+
+                {hasInput && isBelowMin && (
                     <p className="warning">
                         Minimum word count not reached. Minimum required: {minWords}
                     </p>
                 )}
-                {isAboveMax && (
+                {hasInput && isAboveMax && (
                     <p className="warning">
                         Maximum word count exceeded. Maximum allowed: {maxWords}
                     </p>
