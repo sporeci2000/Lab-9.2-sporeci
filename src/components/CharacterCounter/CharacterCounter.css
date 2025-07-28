@@ -1,0 +1,32 @@
+.container {
+    max-width: 600px;
+    margin: 2rem auto;
+    font-family: Arial, sans-serif;
+}
+
+.warning {
+    color: #dc2626;
+    /* red-600 */
+    margin-top: 0.5rem;
+    font-weight: 600;
+}
+
+.progress-bar-background {
+    background-color: #e5e7eb;
+    /* gray-200 */
+    height: 12px;
+    border-radius: 6px;
+    overflow: hidden;
+    margin-top: 0.5rem;
+}
+
+.progress-bar-fill {
+    background-color: #3b82f6;
+    /* blue-500 */
+    height: 100%;
+    transition: width 0.3s ease;
+}
+
+.section {
+    margin-bottom: 1.5rem;
+}
