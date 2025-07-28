@@ -1,15 +1,17 @@
 .stats-container {
     display: flex;
+    justify-content: center;
     gap: 2rem;
     font-family: Arial, sans-serif;
     font-size: 1rem;
     padding: 1rem;
-    border: 1px solid #ddd;
+    border: 2px solid #e02d2d;
     border-radius: 8px;
-    background-color: #f9f9f9;
+    background-color: #ffffff;
+    width: 100%;
 }
 
-.stat-item {
+.stat-span {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -18,11 +20,11 @@
 
 .stat-label {
     font-weight: 600;
-    color: #555;
+    color: #070000;
     margin-bottom: 0.25rem;
 }
 
-.stat-value {
+.stat-number {
     font-size: 1.5rem;
-    color: #222;
+    color: #040000;
 }

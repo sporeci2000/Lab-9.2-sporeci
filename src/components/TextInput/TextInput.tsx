@@ -2,7 +2,7 @@ import React from 'react';
 import type { TextInputProps } from '../../types';
 import './TextInput.css';
 
-// Define the TextInput component
+//Define the TextInput component
 export const TextInput: React.FC<TextInputProps> = ({
     onTextChange,
     placeholder = 'Start typing...',

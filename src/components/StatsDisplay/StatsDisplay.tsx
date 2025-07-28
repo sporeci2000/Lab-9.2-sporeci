@@ -2,6 +2,7 @@ import React from 'react';
 import type { StatsDisplayProps } from '../../types';
 import './StatsDisplay.css';
 
+//Define the StatsDisplay component
 export const StatsDisplay: React.FC<StatsDisplayProps> = ({
     stats,
     showReadingTime = false,
@@ -10,20 +11,20 @@ export const StatsDisplay: React.FC<StatsDisplayProps> = ({
 
     return (
         <div className="stats-container">
-            <div className="stat-item">
+            <div className="stat-span">
                 <span className="stat-label">Characters</span>
-                <span className="stat-value">{characterCount}</span>
+                <span className="stat-number">{characterCount}</span>
             </div>
 
-            <div className="stat-item">
+            <div className="stat-span">
                 <span className="stat-label">Words</span>
-                <span className="stat-value">{wordCount}</span>
+                <span className="stat-number">{wordCount}</span>
             </div>
 
             {showReadingTime && (
-                <div className="stat-item">
-                    <span className="stat-label">Reading Time (min)</span>
-                    <span className="stat-value">{readingTime.toFixed(1)}</span>
+                <div className="stat-span">
+                    <span className="stat-label">Reading Time</span>
+                    <span className="stat-number">{readingTime.toFixed(2)}</span>
                 </div>
             )}
         </div>
