@@ -1,0 +1,21 @@
+.text-container {
+    width: 100%;
+}
+
+.text-input {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.text-input:focus {
+    border-color: #3b82f6;
+    /* blue border */
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.4);
+    /* soft focus ring */
+    outline: none;
+}
