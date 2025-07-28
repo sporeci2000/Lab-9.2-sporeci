@@ -5,7 +5,7 @@
 .text-input {
     width: 100%;
     padding: 1rem;
-    border: 1px solid #ccc;
+    border: 1px solid #ff0202;
     border-radius: 8px;
     font-size: 1rem;
     font-family: inherit;
@@ -13,9 +13,7 @@
 }
 
 .text-input:focus {
-    border-color: #3b82f6;
-    /* blue border */
-    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.4);
-    /* soft focus ring */
+    border-color: #0061fe;
+    box-shadow: 0 0 0 2px rgba(222, 231, 247, 0.4);
     outline: none;
 }
