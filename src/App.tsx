@@ -9,7 +9,7 @@ import { CharacterCounter } from './components/CharacterCounter/CharacterCounter
 function App() {
   return (
     <div style={{ maxWidth: 600, margin: '2rem auto', fontFamily: 'Arial, sans-serif' }}>
-      <h1>Character Counter App</h1>
+      <h1>Character Counter</h1>
       <CharacterCounter minWords={10} maxWords={100} targetReadingTime={1} />
     </div>
   );

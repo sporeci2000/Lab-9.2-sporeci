@@ -2,7 +2,7 @@
 export interface TextInputProps {
     onTextChange: (text: string) => void;
     placeholder?: string;
-    initialValue?: string;
+    value: string;
 }
 
 //Describes the statistics we calculate from the text

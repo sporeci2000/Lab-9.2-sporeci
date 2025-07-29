@@ -6,7 +6,7 @@ import './TextInput.css';
 export const TextInput: React.FC<TextInputProps> = ({
     onTextChange,
     placeholder = 'Start typing...',
-    initialValue = '' //Empty string
+    value,
 }) => {
     return (
         <div className="text-container">
@@ -14,7 +14,7 @@ export const TextInput: React.FC<TextInputProps> = ({
             <textarea
                 className="text-input"
                 placeholder={placeholder}
-                defaultValue={initialValue}
+                value={value}
                 onChange={(e) => onTextChange(e.target.value)}
                 rows={6}
             />

@@ -1,1 +1,12 @@
-I handled state updates using React’s useState hook, where the TextInput component triggers an onTextChange callback whenever the user types. This updates the parent component’s state and recalculates statistics in real time. For reading time, I considered an average reading speed of 200 words per minute and divided the word count by 200 to get the estimated time, while capping progress at 100% to avoid visual overflow. To ensure the UI stayed responsive during rapid input, I kept calculations lightweight by using simple string operations like length and split(/\s+/), avoiding unnecessary loops or re-renders. One challenge I faced was accurately counting words and managing edge cases such as extra spaces or empty input, which I solved by trimming the text and filtering empty strings. Another challenge was dynamically validating minimum and maximum word limits without interrupting the typing experience, which I addressed with conditional warnings that update in real time.
+I used React’s useState to keep track of the text the user types. Every time the text changes, I update this state so the app knows what the user has typed.
+To calculate reading time, I assumed people read about 200 words per minute. So, I divided the number of words by 200 to get how many minutes it might take to read.
+The app stays fast even when typing quickly because the calculations are simple and happen quickly on each change. I didn’t do anything complex inside the typing handler to avoid slowing down.
+The hardest parts were counting words correctly (like ignoring extra spaces), making sure the stats always match the text, stopping the user from typing more than the max words without breaking their typing, and showing the right warning messages only when needed. Also, I made sure the reading time looks nice with decimals.
+
+REFERENCES:
+https://legacy.reactjs.org/docs/hooks-state.html 
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/length 
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/trim 
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/split 
+https://legacy.reactjs.org/docs/components-and-props.html 
+https://legacy.reactjs.org/docs/jsx-in-depth.html 

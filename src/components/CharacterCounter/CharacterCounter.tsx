@@ -4,39 +4,41 @@ import { TextInput } from '../TextInput/TextInput';
 import { StatsDisplay } from '../StatsDisplay/StatsDisplay';
 import './CharacterCounter.css';
 
+//Define the CharacterCounter component 
 export const CharacterCounter: React.FC<CharacterCounterProps> = ({
-    minWords = 0,
-    maxWords = Infinity,
+    minWords = 25,
+    maxWords = 100,
     targetReadingTime = 0, // in minutes
+
 }) => {
+
+    //State to hold user text - initialized empty
     const [text, setText] = useState('');
 
+    //Function to handle text changes from the TextInput component
     const handleTextChange = (newText: string) => {
-        const words = newText.trim().split(/\s+/);
-        if (words.length <= maxWords) {
-            setText(newText);
-        }
-
+        setText(newText);
     };
 
+    //Calculate the number of characters in current text
     const characterCount = text.length;
 
     const wordCount = text.trim() === ''
         ? 0
         : text.trim().split(/\s+/).length;
 
-    const readingTime = wordCount / 200; // estimate reading time
+    const readingTime = wordCount / 200; //estimate reading time
 
-    // Progress for reading time (0 to 100%)
+    //Progress for reading time (0 to 100%)
     const readingProgress = targetReadingTime > 0
         ? Math.min((readingTime / targetReadingTime) * 100, 100)
         : 0;
 
-    // Validation checks
+    //Validation checks
     const isBelowMin = wordCount < minWords;
     const isAboveMax = wordCount > maxWords;
 
-    // Check if user typed something
+    //Check if user typed something
     const hasInput = text.trim().length > 0;
 
     return (
@@ -44,16 +46,9 @@ export const CharacterCounter: React.FC<CharacterCounterProps> = ({
             <div className="section">
                 <TextInput
                     onTextChange={handleTextChange}
-                    placeholder="Start typing here..."
-                    initialValue=""
+                    placeholder="Start typing your content here..."
+                    value={text} 
                 />
-
-                <button
-                    onClick={() => setText('')}
-                    style={{ marginTop: '1rem', padding: '0.5rem 1rem', cursor: 'pointer' }}
-                >
-                    Clear Text
-                </button>
             </div>
 
             <div className="section">
@@ -64,24 +59,10 @@ export const CharacterCounter: React.FC<CharacterCounterProps> = ({
             </div>
 
             <div className="section">
-                {targetReadingTime > 0 && (
-                    <>
-                        <label>Reading time progress:</label>
-                        <div className="progress-bar-background" aria-label="Reading time progress">
-                            <div
-                                className="progress-bar-fill"
-                                style={{ width: `${readingProgress}%` }}
-                            />
-                        </div>
-                    </>
-                )}
-            </div>
-
-            <div className="section">
 
                 {hasInput && isBelowMin && (
                     <p className="warning">
-                        Minimum word count not reached. Minimum required: {minWords}
+                        Please write at least {minWords} words.
                     </p>
                 )}
                 {hasInput && isAboveMax && (
