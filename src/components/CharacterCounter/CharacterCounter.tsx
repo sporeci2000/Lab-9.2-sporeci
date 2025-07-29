@@ -23,16 +23,13 @@ export const CharacterCounter: React.FC<CharacterCounterProps> = ({
     //Calculate the number of characters in current text
     const characterCount = text.length;
 
-    const wordCount = text.trim() === ''
-        ? 0
-        : text.trim().split(/\s+/).length;
+    const wordCount = text
+        .trim()
+        .split(" ")             // split by single spaces
+        .filter(word => word !== "") // remove empty items
+        .length;
 
     const readingTime = wordCount / 200; //estimate reading time
-
-    //Progress for reading time (0 to 100%)
-    const readingProgress = targetReadingTime > 0
-        ? Math.min((readingTime / targetReadingTime) * 100, 100)
-        : 0;
 
     //Validation checks
     const isBelowMin = wordCount < minWords;
@@ -47,7 +44,7 @@ export const CharacterCounter: React.FC<CharacterCounterProps> = ({
                 <TextInput
                     onTextChange={handleTextChange}
                     placeholder="Start typing your content here..."
-                    value={text} 
+                    value={text}
                 />
             </div>
 
